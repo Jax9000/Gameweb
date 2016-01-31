@@ -1,0 +1,1331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GAMEWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gatunki">
+          <Key>
+            <PropertyRef Name="GatunekID" />
+          </Key>
+          <Property Name="GatunekID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GatunkiGier">
+          <Key>
+            <PropertyRef Name="GraID" />
+            <PropertyRef Name="GatunekID" />
+          </Key>
+          <Property Name="GraID" Type="int" Nullable="false" />
+          <Property Name="GatunekID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gry">
+          <Key>
+            <PropertyRef Name="GraID" />
+          </Key>
+          <Property Name="GraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudioID" Type="int" />
+          <Property Name="Tytul" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataWydania" Type="date" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Komentarze">
+          <Key>
+            <PropertyRef Name="KomentarzID" />
+          </Key>
+          <Property Name="KomentarzID" Type="int" Nullable="false" />
+          <Property Name="WpisID" Type="int" />
+          <Property Name="Tresc" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="OcenyGier">
+          <Key>
+            <PropertyRef Name="GraID" />
+            <PropertyRef Name="UzytkownikID" />
+          </Key>
+          <Property Name="GraID" Type="int" Nullable="false" />
+          <Property Name="UzytkownikID" Type="int" Nullable="false" />
+          <Property Name="OcenaOgolna" Type="int" Nullable="false" />
+          <Property Name="Fabula" Type="int" Nullable="false" />
+          <Property Name="Grafika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OcenyWpisow">
+          <Key>
+            <PropertyRef Name="UzytkownikID" />
+            <PropertyRef Name="WpisID" />
+          </Key>
+          <Property Name="UzytkownikID" Type="int" Nullable="false" />
+          <Property Name="WpisID" Type="int" Nullable="false" />
+          <Property Name="BinarnaOcena" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ostrzezenia">
+          <Key>
+            <PropertyRef Name="OstrzezenieID" />
+          </Key>
+          <Property Name="OstrzezenieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OstrzegajacyID" Type="int" />
+          <Property Name="OstrzeganyID" Type="int" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Platformy">
+          <Key>
+            <PropertyRef Name="PlatformaID" />
+          </Key>
+          <Property Name="PlatformaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProducentID" Type="int" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataWydania" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlatformyGier">
+          <Key>
+            <PropertyRef Name="GraID" />
+            <PropertyRef Name="PlatformaID" />
+          </Key>
+          <Property Name="GraID" Type="int" Nullable="false" />
+          <Property Name="PlatformaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producenci">
+          <Key>
+            <PropertyRef Name="ProducentID" />
+          </Key>
+          <Property Name="ProducentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Prezes" Type="nvarchar" MaxLength="200" />
+          <Property Name="DataZalozenia" Type="date" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Recenzje">
+          <Key>
+            <PropertyRef Name="RecenzjaID" />
+          </Key>
+          <Property Name="RecenzjaID" Type="int" Nullable="false" />
+          <Property Name="DlugaTresc" Type="nvarchar" MaxLength="2000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Studia">
+          <Key>
+            <PropertyRef Name="StudioID" />
+          </Key>
+          <Property Name="StudioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataZalozenia" Type="date" />
+          <Property Name="IloscPracownikow" Type="int" />
+          <Property Name="Zalozyciel" Type="nvarchar" MaxLength="500" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Uprawnienia">
+          <Key>
+            <PropertyRef Name="UprawnienieID" />
+          </Key>
+          <Property Name="UprawnienieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DodawanieWpisow" Type="bit" />
+          <Property Name="DodawanieOcen" Type="bit" />
+          <Property Name="UsuwanieWpisowOcen" Type="bit" />
+          <Property Name="UsuwanieWlasnychWpisowOcen" Type="bit" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="UzytkownikID" />
+          </Key>
+          <Property Name="UzytkownikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UprawnienieID" Type="int" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Haslo" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Plec" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="BlokadaKonta" Type="bit" Nullable="false" />
+          <Property Name="DataUrodzenia" Type="date" />
+          <Property Name="Zdjecie" Type="varbinary" MaxLength="1" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Wpisy">
+          <Key>
+            <PropertyRef Name="WpisID" />
+          </Key>
+          <Property Name="WpisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GraID" Type="int" />
+          <Property Name="UzytkownikID" Type="int" Nullable="false" />
+          <Property Name="Tytul" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataDodania" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zdjecia">
+          <Key>
+            <PropertyRef Name="ZdjecieID" />
+          </Key>
+          <Property Name="ZdjecieID" Type="int" Nullable="false" />
+          <Property Name="PlikGraficzny" Type="varbinary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GAMEWEB.dbo.CaleZdjecie' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CaleZdjecie">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UzytkownikID" />
+            <PropertyRef Name="Tytul" />
+            <PropertyRef Name="DataDodania" />
+            <PropertyRef Name="PlikGraficzny" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UzytkownikID" Type="int" Nullable="false" />
+          <Property Name="GraID" Type="int" />
+          <Property Name="Tytul" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataDodania" Type="date" Nullable="false" />
+          <Property Name="PlikGraficzny" Type="varbinary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RankingGier">
+          <Key>
+            <PropertyRef Name="GraID" />
+          </Key>
+          <Property Name="GraID" Type="int" Nullable="false" />
+          <Property Name="SredniaOcena" Type="float" />
+        </EntityType>
+        <Association Name="FK__GatunkiGi__Gatun__412EB0B6">
+          <End Role="Gatunki" Type="Self.Gatunki" Multiplicity="1" />
+          <End Role="GatunkiGier" Type="Self.GatunkiGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gatunki">
+              <PropertyRef Name="GatunekID" />
+            </Principal>
+            <Dependent Role="GatunkiGier">
+              <PropertyRef Name="GatunekID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GatunkiGi__GraID__403A8C7D">
+          <End Role="Gry" Type="Self.Gry" Multiplicity="1" />
+          <End Role="GatunkiGier" Type="Self.GatunkiGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gry">
+              <PropertyRef Name="GraID" />
+            </Principal>
+            <Dependent Role="GatunkiGier">
+              <PropertyRef Name="GraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gry__StudioID__29572725">
+          <End Role="Studia" Type="Self.Studia" Multiplicity="0..1" />
+          <End Role="Gry" Type="Self.Gry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studia">
+              <PropertyRef Name="StudioID" />
+            </Principal>
+            <Dependent Role="Gry">
+              <PropertyRef Name="StudioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Komentarz__Komen__32E0915F">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="Komentarze" Type="Self.Komentarze" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Komentarze">
+              <PropertyRef Name="KomentarzID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Komentarz__WpisI__33D4B598">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="0..1" />
+          <End Role="Komentarze" Type="Self.Komentarze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Komentarze">
+              <PropertyRef Name="WpisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyGier__GraID__3C69FB99">
+          <End Role="Gry" Type="Self.Gry" Multiplicity="1" />
+          <End Role="OcenyGier" Type="Self.OcenyGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gry">
+              <PropertyRef Name="GraID" />
+            </Principal>
+            <Dependent Role="OcenyGier">
+              <PropertyRef Name="GraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyGier__Uzytk__3D5E1FD2">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="OcenyGier" Type="Self.OcenyGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="OcenyGier">
+              <PropertyRef Name="UzytkownikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyWpis__Uzytk__47DBAE45">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="OcenyWpisow" Type="Self.OcenyWpisow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="OcenyWpisow">
+              <PropertyRef Name="UzytkownikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyWpis__WpisI__48CFD27E">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="OcenyWpisow" Type="Self.OcenyWpisow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="OcenyWpisow">
+              <PropertyRef Name="WpisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ostrzezen__Ostrz__25869641">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="0..1" />
+          <End Role="Ostrzezenia" Type="Self.Ostrzezenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="Ostrzezenia">
+              <PropertyRef Name="OstrzegajacyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ostrzezen__Ostrz__267ABA7A">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="0..1" />
+          <End Role="Ostrzezenia" Type="Self.Ostrzezenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="Ostrzezenia">
+              <PropertyRef Name="OstrzeganyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platformy__GraID__440B1D61">
+          <End Role="Gry" Type="Self.Gry" Multiplicity="1" />
+          <End Role="PlatformyGier" Type="Self.PlatformyGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gry">
+              <PropertyRef Name="GraID" />
+            </Principal>
+            <Dependent Role="PlatformyGier">
+              <PropertyRef Name="GraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platformy__Platf__44FF419A">
+          <End Role="Platformy" Type="Self.Platformy" Multiplicity="1" />
+          <End Role="PlatformyGier" Type="Self.PlatformyGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platformy">
+              <PropertyRef Name="PlatformaID" />
+            </Principal>
+            <Dependent Role="PlatformyGier">
+              <PropertyRef Name="PlatformaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platformy__Produ__2C3393D0">
+          <End Role="Producenci" Type="Self.Producenci" Multiplicity="0..1" />
+          <End Role="Platformy" Type="Self.Platformy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producenci">
+              <PropertyRef Name="ProducentID" />
+            </Principal>
+            <Dependent Role="Platformy">
+              <PropertyRef Name="ProducentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recenzje__Recenz__398D8EEE">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="Recenzje" Type="Self.Recenzje" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Recenzje">
+              <PropertyRef Name="RecenzjaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uzytkowni__Upraw__22AA2996">
+          <End Role="Uprawnienia" Type="Self.Uprawnienia" Multiplicity="0..1" />
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uprawnienia">
+              <PropertyRef Name="UprawnienieID" />
+            </Principal>
+            <Dependent Role="Uzytkownicy">
+              <PropertyRef Name="UprawnienieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wpisy__GraID__2F10007B">
+          <End Role="Gry" Type="Self.Gry" Multiplicity="0..1" />
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gry">
+              <PropertyRef Name="GraID" />
+            </Principal>
+            <Dependent Role="Wpisy">
+              <PropertyRef Name="GraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wpisy__Uzytkowni__300424B4">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="Wpisy">
+              <PropertyRef Name="UzytkownikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zdjecia__Zdjecie__36B12243">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="Zdjecia" Type="Self.Zdjecia" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Zdjecia">
+              <PropertyRef Name="ZdjecieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="GAMEWEBModelStoreContainer">
+          <EntitySet Name="Gatunki" EntityType="Self.Gatunki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GatunkiGier" EntityType="Self.GatunkiGier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gry" EntityType="Self.Gry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komentarze" EntityType="Self.Komentarze" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OcenyGier" EntityType="Self.OcenyGier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OcenyWpisow" EntityType="Self.OcenyWpisow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ostrzezenia" EntityType="Self.Ostrzezenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platformy" EntityType="Self.Platformy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlatformyGier" EntityType="Self.PlatformyGier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producenci" EntityType="Self.Producenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recenzje" EntityType="Self.Recenzje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Studia" EntityType="Self.Studia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uprawnienia" EntityType="Self.Uprawnienia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wpisy" EntityType="Self.Wpisy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zdjecia" EntityType="Self.Zdjecia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaleZdjecie" EntityType="Self.CaleZdjecie" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CaleZdjecie].[ID] AS [ID], 
+    [CaleZdjecie].[UzytkownikID] AS [UzytkownikID], 
+    [CaleZdjecie].[GraID] AS [GraID], 
+    [CaleZdjecie].[Tytul] AS [Tytul], 
+    [CaleZdjecie].[DataDodania] AS [DataDodania], 
+    [CaleZdjecie].[PlikGraficzny] AS [PlikGraficzny]
+    FROM [dbo].[CaleZdjecie] AS [CaleZdjecie]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RankingGier" EntityType="Self.RankingGier" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RankingGier].[GraID] AS [GraID], 
+    [RankingGier].[SredniaOcena] AS [SredniaOcena]
+    FROM [dbo].[RankingGier] AS [RankingGier]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__GatunkiGi__Gatun__412EB0B6" Association="Self.FK__GatunkiGi__Gatun__412EB0B6">
+            <End Role="Gatunki" EntitySet="Gatunki" />
+            <End Role="GatunkiGier" EntitySet="GatunkiGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GatunkiGi__GraID__403A8C7D" Association="Self.FK__GatunkiGi__GraID__403A8C7D">
+            <End Role="Gry" EntitySet="Gry" />
+            <End Role="GatunkiGier" EntitySet="GatunkiGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gry__StudioID__29572725" Association="Self.FK__Gry__StudioID__29572725">
+            <End Role="Studia" EntitySet="Studia" />
+            <End Role="Gry" EntitySet="Gry" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Komentarz__Komen__32E0915F" Association="Self.FK__Komentarz__Komen__32E0915F">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Komentarze" EntitySet="Komentarze" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Komentarz__WpisI__33D4B598" Association="Self.FK__Komentarz__WpisI__33D4B598">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Komentarze" EntitySet="Komentarze" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyGier__GraID__3C69FB99" Association="Self.FK__OcenyGier__GraID__3C69FB99">
+            <End Role="Gry" EntitySet="Gry" />
+            <End Role="OcenyGier" EntitySet="OcenyGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyGier__Uzytk__3D5E1FD2" Association="Self.FK__OcenyGier__Uzytk__3D5E1FD2">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="OcenyGier" EntitySet="OcenyGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyWpis__Uzytk__47DBAE45" Association="Self.FK__OcenyWpis__Uzytk__47DBAE45">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="OcenyWpisow" EntitySet="OcenyWpisow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyWpis__WpisI__48CFD27E" Association="Self.FK__OcenyWpis__WpisI__48CFD27E">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="OcenyWpisow" EntitySet="OcenyWpisow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ostrzezen__Ostrz__25869641" Association="Self.FK__Ostrzezen__Ostrz__25869641">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Ostrzezenia" EntitySet="Ostrzezenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ostrzezen__Ostrz__267ABA7A" Association="Self.FK__Ostrzezen__Ostrz__267ABA7A">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Ostrzezenia" EntitySet="Ostrzezenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platformy__GraID__440B1D61" Association="Self.FK__Platformy__GraID__440B1D61">
+            <End Role="Gry" EntitySet="Gry" />
+            <End Role="PlatformyGier" EntitySet="PlatformyGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platformy__Platf__44FF419A" Association="Self.FK__Platformy__Platf__44FF419A">
+            <End Role="Platformy" EntitySet="Platformy" />
+            <End Role="PlatformyGier" EntitySet="PlatformyGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platformy__Produ__2C3393D0" Association="Self.FK__Platformy__Produ__2C3393D0">
+            <End Role="Producenci" EntitySet="Producenci" />
+            <End Role="Platformy" EntitySet="Platformy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recenzje__Recenz__398D8EEE" Association="Self.FK__Recenzje__Recenz__398D8EEE">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Recenzje" EntitySet="Recenzje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uzytkowni__Upraw__22AA2996" Association="Self.FK__Uzytkowni__Upraw__22AA2996">
+            <End Role="Uprawnienia" EntitySet="Uprawnienia" />
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wpisy__GraID__2F10007B" Association="Self.FK__Wpisy__GraID__2F10007B">
+            <End Role="Gry" EntitySet="Gry" />
+            <End Role="Wpisy" EntitySet="Wpisy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wpisy__Uzytkowni__300424B4" Association="Self.FK__Wpisy__Uzytkowni__300424B4">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Wpisy" EntitySet="Wpisy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zdjecia__Zdjecie__36B12243" Association="Self.FK__Zdjecia__Zdjecie__36B12243">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Zdjecia" EntitySet="Zdjecia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GAMEWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gatunki">
+          <Key>
+            <PropertyRef Name="GatunekID" />
+          </Key>
+          <Property Name="GatunekID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Gry" Relationship="Self.GatunkiGier" FromRole="Gatunki" ToRole="Gry" />
+        </EntityType>
+        <EntityType Name="Gry">
+          <Key>
+            <PropertyRef Name="GraID" />
+          </Key>
+          <Property Name="GraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudioID" Type="Int32" />
+          <Property Name="Tytul" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataWydania" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Opis" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Studia" Relationship="Self.FK__Gry__StudioID__29572725" FromRole="Gry" ToRole="Studia" />
+          <NavigationProperty Name="OcenyGier" Relationship="Self.FK__OcenyGier__GraID__3C69FB99" FromRole="Gry" ToRole="OcenyGier" />
+          <NavigationProperty Name="Wpisy" Relationship="Self.FK__Wpisy__GraID__2F10007B" FromRole="Gry" ToRole="Wpisy" />
+          <NavigationProperty Name="Gatunki" Relationship="Self.GatunkiGier" FromRole="Gry" ToRole="Gatunki" />
+          <NavigationProperty Name="Platformy" Relationship="Self.PlatformyGier" FromRole="Gry" ToRole="Platformy" />
+        </EntityType>
+        <EntityType Name="Komentarze">
+          <Key>
+            <PropertyRef Name="KomentarzID" />
+          </Key>
+          <Property Name="KomentarzID" Type="Int32" Nullable="false" />
+          <Property Name="WpisID" Type="Int32" />
+          <Property Name="Tresc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Wpisy" Relationship="Self.FK__Komentarz__Komen__32E0915F" FromRole="Komentarze" ToRole="Wpisy" />
+          <NavigationProperty Name="Wpisy1" Relationship="Self.FK__Komentarz__WpisI__33D4B598" FromRole="Komentarze" ToRole="Wpisy" />
+        </EntityType>
+        <EntityType Name="OcenyGier">
+          <Key>
+            <PropertyRef Name="GraID" />
+            <PropertyRef Name="UzytkownikID" />
+          </Key>
+          <Property Name="GraID" Type="Int32" Nullable="false" />
+          <Property Name="UzytkownikID" Type="Int32" Nullable="false" />
+          <Property Name="OcenaOgolna" Type="Int32" Nullable="false" />
+          <Property Name="Fabula" Type="Int32" Nullable="false" />
+          <Property Name="Grafika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gry" Relationship="Self.FK__OcenyGier__GraID__3C69FB99" FromRole="OcenyGier" ToRole="Gry" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK__OcenyGier__Uzytk__3D5E1FD2" FromRole="OcenyGier" ToRole="Uzytkownicy" />
+        </EntityType>
+        <EntityType Name="OcenyWpisow">
+          <Key>
+            <PropertyRef Name="UzytkownikID" />
+            <PropertyRef Name="WpisID" />
+          </Key>
+          <Property Name="UzytkownikID" Type="Int32" Nullable="false" />
+          <Property Name="WpisID" Type="Int32" Nullable="false" />
+          <Property Name="BinarnaOcena" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK__OcenyWpis__Uzytk__47DBAE45" FromRole="OcenyWpisow" ToRole="Uzytkownicy" />
+          <NavigationProperty Name="Wpisy" Relationship="Self.FK__OcenyWpis__WpisI__48CFD27E" FromRole="OcenyWpisow" ToRole="Wpisy" />
+        </EntityType>
+        <EntityType Name="Ostrzezenia">
+          <Key>
+            <PropertyRef Name="OstrzezenieID" />
+          </Key>
+          <Property Name="OstrzezenieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OstrzegajacyID" Type="Int32" />
+          <Property Name="OstrzeganyID" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK__Ostrzezen__Ostrz__25869641" FromRole="Ostrzezenia" ToRole="Uzytkownicy" />
+          <NavigationProperty Name="Uzytkownicy1" Relationship="Self.FK__Ostrzezen__Ostrz__267ABA7A" FromRole="Ostrzezenia" ToRole="Uzytkownicy" />
+        </EntityType>
+        <EntityType Name="Platformy">
+          <Key>
+            <PropertyRef Name="PlatformaID" />
+          </Key>
+          <Property Name="PlatformaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProducentID" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataWydania" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Producenci" Relationship="Self.FK__Platformy__Produ__2C3393D0" FromRole="Platformy" ToRole="Producenci" />
+          <NavigationProperty Name="Gry" Relationship="Self.PlatformyGier" FromRole="Platformy" ToRole="Gry" />
+        </EntityType>
+        <EntityType Name="Producenci">
+          <Key>
+            <PropertyRef Name="ProducentID" />
+          </Key>
+          <Property Name="ProducentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DataZalozenia" Type="DateTime" Precision="0" />
+          <Property Name="Opis" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Platformy" Relationship="Self.FK__Platformy__Produ__2C3393D0" FromRole="Producenci" ToRole="Platformy" />
+        </EntityType>
+        <EntityType Name="Recenzje">
+          <Key>
+            <PropertyRef Name="RecenzjaID" />
+          </Key>
+          <Property Name="RecenzjaID" Type="Int32" Nullable="false" />
+          <Property Name="DlugaTresc" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Wpisy" Relationship="Self.FK__Recenzje__Recenz__398D8EEE" FromRole="Recenzje" ToRole="Wpisy" />
+        </EntityType>
+        <EntityType Name="Studia">
+          <Key>
+            <PropertyRef Name="StudioID" />
+          </Key>
+          <Property Name="StudioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataZalozenia" Type="DateTime" Precision="0" />
+          <Property Name="IloscPracownikow" Type="Int32" />
+          <Property Name="Zalozyciel" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gry" Relationship="Self.FK__Gry__StudioID__29572725" FromRole="Studia" ToRole="Gry" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Uprawnienia">
+          <Key>
+            <PropertyRef Name="UprawnienieID" />
+          </Key>
+          <Property Name="UprawnienieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DodawanieWpisow" Type="Boolean" />
+          <Property Name="DodawanieOcen" Type="Boolean" />
+          <Property Name="UsuwanieWpisowOcen" Type="Boolean" />
+          <Property Name="UsuwanieWlasnychWpisowOcen" Type="Boolean" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK__Uzytkowni__Upraw__22AA2996" FromRole="Uprawnienia" ToRole="Uzytkownicy" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="UzytkownikID" />
+          </Key>
+          <Property Name="UzytkownikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UprawnienieID" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Haslo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Plec" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlokadaKonta" Type="Boolean" Nullable="false" />
+          <Property Name="DataUrodzenia" Type="DateTime" Precision="0" />
+          <Property Name="Zdjecie" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="Opis" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OcenyGier" Relationship="Self.FK__OcenyGier__Uzytk__3D5E1FD2" FromRole="Uzytkownicy" ToRole="OcenyGier" />
+          <NavigationProperty Name="OcenyWpisow" Relationship="Self.FK__OcenyWpis__Uzytk__47DBAE45" FromRole="Uzytkownicy" ToRole="OcenyWpisow" />
+          <NavigationProperty Name="Ostrzezenia" Relationship="Self.FK__Ostrzezen__Ostrz__25869641" FromRole="Uzytkownicy" ToRole="Ostrzezenia" />
+          <NavigationProperty Name="Ostrzezenia1" Relationship="Self.FK__Ostrzezen__Ostrz__267ABA7A" FromRole="Uzytkownicy" ToRole="Ostrzezenia" />
+          <NavigationProperty Name="Uprawnienia" Relationship="Self.FK__Uzytkowni__Upraw__22AA2996" FromRole="Uzytkownicy" ToRole="Uprawnienia" />
+          <NavigationProperty Name="Wpisy" Relationship="Self.FK__Wpisy__Uzytkowni__300424B4" FromRole="Uzytkownicy" ToRole="Wpisy" />
+        </EntityType>
+        <EntityType Name="Wpisy">
+          <Key>
+            <PropertyRef Name="WpisID" />
+          </Key>
+          <Property Name="WpisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GraID" Type="Int32" />
+          <Property Name="UzytkownikID" Type="Int32" Nullable="false" />
+          <Property Name="Tytul" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataDodania" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Gry" Relationship="Self.FK__Wpisy__GraID__2F10007B" FromRole="Wpisy" ToRole="Gry" />
+          <NavigationProperty Name="Komentarze" Relationship="Self.FK__Komentarz__Komen__32E0915F" FromRole="Wpisy" ToRole="Komentarze" />
+          <NavigationProperty Name="Komentarze1" Relationship="Self.FK__Komentarz__WpisI__33D4B598" FromRole="Wpisy" ToRole="Komentarze" />
+          <NavigationProperty Name="OcenyWpisow" Relationship="Self.FK__OcenyWpis__WpisI__48CFD27E" FromRole="Wpisy" ToRole="OcenyWpisow" />
+          <NavigationProperty Name="Recenzje" Relationship="Self.FK__Recenzje__Recenz__398D8EEE" FromRole="Wpisy" ToRole="Recenzje" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="Self.FK__Wpisy__Uzytkowni__300424B4" FromRole="Wpisy" ToRole="Uzytkownicy" />
+          <NavigationProperty Name="Zdjecia" Relationship="Self.FK__Zdjecia__Zdjecie__36B12243" FromRole="Wpisy" ToRole="Zdjecia" />
+        </EntityType>
+        <EntityType Name="Zdjecia">
+          <Key>
+            <PropertyRef Name="ZdjecieID" />
+          </Key>
+          <Property Name="ZdjecieID" Type="Int32" Nullable="false" />
+          <Property Name="PlikGraficzny" Type="Binary" MaxLength="1" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Wpisy" Relationship="Self.FK__Zdjecia__Zdjecie__36B12243" FromRole="Zdjecia" ToRole="Wpisy" />
+        </EntityType>
+        <EntityType Name="CaleZdjecie">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UzytkownikID" />
+            <PropertyRef Name="Tytul" />
+            <PropertyRef Name="DataDodania" />
+            <PropertyRef Name="PlikGraficzny" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UzytkownikID" Type="Int32" Nullable="false" />
+          <Property Name="GraID" Type="Int32" />
+          <Property Name="Tytul" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataDodania" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlikGraficzny" Type="Binary" MaxLength="1" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RankingGier">
+          <Key>
+            <PropertyRef Name="GraID" />
+          </Key>
+          <Property Name="GraID" Type="Int32" Nullable="false" />
+          <Property Name="SredniaOcena" Type="Double" />
+        </EntityType>
+        <Association Name="FK__Gry__StudioID__29572725">
+          <End Role="Studia" Type="Self.Studia" Multiplicity="0..1" />
+          <End Role="Gry" Type="Self.Gry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Studia">
+              <PropertyRef Name="StudioID" />
+            </Principal>
+            <Dependent Role="Gry">
+              <PropertyRef Name="StudioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyGier__GraID__3C69FB99">
+          <End Role="Gry" Type="Self.Gry" Multiplicity="1" />
+          <End Role="OcenyGier" Type="Self.OcenyGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gry">
+              <PropertyRef Name="GraID" />
+            </Principal>
+            <Dependent Role="OcenyGier">
+              <PropertyRef Name="GraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wpisy__GraID__2F10007B">
+          <End Role="Gry" Type="Self.Gry" Multiplicity="0..1" />
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gry">
+              <PropertyRef Name="GraID" />
+            </Principal>
+            <Dependent Role="Wpisy">
+              <PropertyRef Name="GraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Komentarz__Komen__32E0915F">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="Komentarze" Type="Self.Komentarze" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Komentarze">
+              <PropertyRef Name="KomentarzID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Komentarz__WpisI__33D4B598">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="0..1" />
+          <End Role="Komentarze" Type="Self.Komentarze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Komentarze">
+              <PropertyRef Name="WpisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyGier__Uzytk__3D5E1FD2">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="OcenyGier" Type="Self.OcenyGier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="OcenyGier">
+              <PropertyRef Name="UzytkownikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyWpis__Uzytk__47DBAE45">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="OcenyWpisow" Type="Self.OcenyWpisow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="OcenyWpisow">
+              <PropertyRef Name="UzytkownikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OcenyWpis__WpisI__48CFD27E">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="OcenyWpisow" Type="Self.OcenyWpisow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="OcenyWpisow">
+              <PropertyRef Name="WpisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ostrzezen__Ostrz__25869641">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="0..1" />
+          <End Role="Ostrzezenia" Type="Self.Ostrzezenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="Ostrzezenia">
+              <PropertyRef Name="OstrzegajacyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ostrzezen__Ostrz__267ABA7A">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="0..1" />
+          <End Role="Ostrzezenia" Type="Self.Ostrzezenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="Ostrzezenia">
+              <PropertyRef Name="OstrzeganyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Platformy__Produ__2C3393D0">
+          <End Role="Producenci" Type="Self.Producenci" Multiplicity="0..1" />
+          <End Role="Platformy" Type="Self.Platformy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producenci">
+              <PropertyRef Name="ProducentID" />
+            </Principal>
+            <Dependent Role="Platformy">
+              <PropertyRef Name="ProducentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Recenzje__Recenz__398D8EEE">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="Recenzje" Type="Self.Recenzje" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Recenzje">
+              <PropertyRef Name="RecenzjaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Uzytkowni__Upraw__22AA2996">
+          <End Role="Uprawnienia" Type="Self.Uprawnienia" Multiplicity="0..1" />
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uprawnienia">
+              <PropertyRef Name="UprawnienieID" />
+            </Principal>
+            <Dependent Role="Uzytkownicy">
+              <PropertyRef Name="UprawnienieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wpisy__Uzytkowni__300424B4">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="UzytkownikID" />
+            </Principal>
+            <Dependent Role="Wpisy">
+              <PropertyRef Name="UzytkownikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zdjecia__Zdjecie__36B12243">
+          <End Role="Wpisy" Type="Self.Wpisy" Multiplicity="1" />
+          <End Role="Zdjecia" Type="Self.Zdjecia" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wpisy">
+              <PropertyRef Name="WpisID" />
+            </Principal>
+            <Dependent Role="Zdjecia">
+              <PropertyRef Name="ZdjecieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GatunkiGier">
+          <End Role="Gatunki" Type="Self.Gatunki" Multiplicity="*" />
+          <End Role="Gry" Type="Self.Gry" Multiplicity="*" />
+        </Association>
+        <Association Name="PlatformyGier">
+          <End Role="Gry" Type="Self.Gry" Multiplicity="*" />
+          <End Role="Platformy" Type="Self.Platformy" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="GAMEWEBEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gatunki" EntityType="Self.Gatunki" />
+          <EntitySet Name="Gry" EntityType="Self.Gry" />
+          <EntitySet Name="Komentarze" EntityType="Self.Komentarze" />
+          <EntitySet Name="OcenyGier" EntityType="Self.OcenyGier" />
+          <EntitySet Name="OcenyWpisow" EntityType="Self.OcenyWpisow" />
+          <EntitySet Name="Ostrzezenia" EntityType="Self.Ostrzezenia" />
+          <EntitySet Name="Platformy" EntityType="Self.Platformy" />
+          <EntitySet Name="Producenci" EntityType="Self.Producenci" />
+          <EntitySet Name="Recenzje" EntityType="Self.Recenzje" />
+          <EntitySet Name="Studia" EntityType="Self.Studia" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Uprawnienia" EntityType="Self.Uprawnienia" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
+          <EntitySet Name="Wpisy" EntityType="Self.Wpisy" />
+          <EntitySet Name="Zdjecia" EntityType="Self.Zdjecia" />
+          <EntitySet Name="CaleZdjecie" EntityType="Self.CaleZdjecie" />
+          <EntitySet Name="RankingGier" EntityType="Self.RankingGier" />
+          <AssociationSet Name="FK__Gry__StudioID__29572725" Association="Self.FK__Gry__StudioID__29572725">
+            <End Role="Studia" EntitySet="Studia" />
+            <End Role="Gry" EntitySet="Gry" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyGier__GraID__3C69FB99" Association="Self.FK__OcenyGier__GraID__3C69FB99">
+            <End Role="Gry" EntitySet="Gry" />
+            <End Role="OcenyGier" EntitySet="OcenyGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wpisy__GraID__2F10007B" Association="Self.FK__Wpisy__GraID__2F10007B">
+            <End Role="Gry" EntitySet="Gry" />
+            <End Role="Wpisy" EntitySet="Wpisy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Komentarz__Komen__32E0915F" Association="Self.FK__Komentarz__Komen__32E0915F">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Komentarze" EntitySet="Komentarze" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Komentarz__WpisI__33D4B598" Association="Self.FK__Komentarz__WpisI__33D4B598">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Komentarze" EntitySet="Komentarze" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyGier__Uzytk__3D5E1FD2" Association="Self.FK__OcenyGier__Uzytk__3D5E1FD2">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="OcenyGier" EntitySet="OcenyGier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyWpis__Uzytk__47DBAE45" Association="Self.FK__OcenyWpis__Uzytk__47DBAE45">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="OcenyWpisow" EntitySet="OcenyWpisow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OcenyWpis__WpisI__48CFD27E" Association="Self.FK__OcenyWpis__WpisI__48CFD27E">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="OcenyWpisow" EntitySet="OcenyWpisow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ostrzezen__Ostrz__25869641" Association="Self.FK__Ostrzezen__Ostrz__25869641">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Ostrzezenia" EntitySet="Ostrzezenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ostrzezen__Ostrz__267ABA7A" Association="Self.FK__Ostrzezen__Ostrz__267ABA7A">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Ostrzezenia" EntitySet="Ostrzezenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Platformy__Produ__2C3393D0" Association="Self.FK__Platformy__Produ__2C3393D0">
+            <End Role="Producenci" EntitySet="Producenci" />
+            <End Role="Platformy" EntitySet="Platformy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Recenzje__Recenz__398D8EEE" Association="Self.FK__Recenzje__Recenz__398D8EEE">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Recenzje" EntitySet="Recenzje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Uzytkowni__Upraw__22AA2996" Association="Self.FK__Uzytkowni__Upraw__22AA2996">
+            <End Role="Uprawnienia" EntitySet="Uprawnienia" />
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wpisy__Uzytkowni__300424B4" Association="Self.FK__Wpisy__Uzytkowni__300424B4">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Wpisy" EntitySet="Wpisy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zdjecia__Zdjecie__36B12243" Association="Self.FK__Zdjecia__Zdjecie__36B12243">
+            <End Role="Wpisy" EntitySet="Wpisy" />
+            <End Role="Zdjecia" EntitySet="Zdjecia" />
+          </AssociationSet>
+          <AssociationSet Name="GatunkiGier" Association="Self.GatunkiGier">
+            <End Role="Gatunki" EntitySet="Gatunki" />
+            <End Role="Gry" EntitySet="Gry" />
+          </AssociationSet>
+          <AssociationSet Name="PlatformyGier" Association="Self.PlatformyGier">
+            <End Role="Gry" EntitySet="Gry" />
+            <End Role="Platformy" EntitySet="Platformy" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GAMEWEBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GAMEWEBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GAMEWEBModelStoreContainer" CdmEntityContainer="GAMEWEBEntities3">
+          <EntitySetMapping Name="Gatunki">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Gatunki">
+              <MappingFragment StoreEntitySet="Gatunki">
+                <ScalarProperty Name="GatunekID" ColumnName="GatunekID" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gry">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Gry">
+              <MappingFragment StoreEntitySet="Gry">
+                <ScalarProperty Name="GraID" ColumnName="GraID" />
+                <ScalarProperty Name="StudioID" ColumnName="StudioID" />
+                <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+                <ScalarProperty Name="DataWydania" ColumnName="DataWydania" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komentarze">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Komentarze">
+              <MappingFragment StoreEntitySet="Komentarze">
+                <ScalarProperty Name="KomentarzID" ColumnName="KomentarzID" />
+                <ScalarProperty Name="WpisID" ColumnName="WpisID" />
+                <ScalarProperty Name="Tresc" ColumnName="Tresc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OcenyGier">
+            <EntityTypeMapping TypeName="GAMEWEBModel.OcenyGier">
+              <MappingFragment StoreEntitySet="OcenyGier">
+                <ScalarProperty Name="GraID" ColumnName="GraID" />
+                <ScalarProperty Name="UzytkownikID" ColumnName="UzytkownikID" />
+                <ScalarProperty Name="OcenaOgolna" ColumnName="OcenaOgolna" />
+                <ScalarProperty Name="Fabula" ColumnName="Fabula" />
+                <ScalarProperty Name="Grafika" ColumnName="Grafika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OcenyWpisow">
+            <EntityTypeMapping TypeName="GAMEWEBModel.OcenyWpisow">
+              <MappingFragment StoreEntitySet="OcenyWpisow">
+                <ScalarProperty Name="UzytkownikID" ColumnName="UzytkownikID" />
+                <ScalarProperty Name="WpisID" ColumnName="WpisID" />
+                <ScalarProperty Name="BinarnaOcena" ColumnName="BinarnaOcena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ostrzezenia">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Ostrzezenia">
+              <MappingFragment StoreEntitySet="Ostrzezenia">
+                <ScalarProperty Name="OstrzezenieID" ColumnName="OstrzezenieID" />
+                <ScalarProperty Name="OstrzegajacyID" ColumnName="OstrzegajacyID" />
+                <ScalarProperty Name="OstrzeganyID" ColumnName="OstrzeganyID" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platformy">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Platformy">
+              <MappingFragment StoreEntitySet="Platformy">
+                <ScalarProperty Name="PlatformaID" ColumnName="PlatformaID" />
+                <ScalarProperty Name="ProducentID" ColumnName="ProducentID" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="DataWydania" ColumnName="DataWydania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producenci">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Producenci">
+              <MappingFragment StoreEntitySet="Producenci">
+                <ScalarProperty Name="ProducentID" ColumnName="ProducentID" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Prezes" ColumnName="Prezes" />
+                <ScalarProperty Name="DataZalozenia" ColumnName="DataZalozenia" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recenzje">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Recenzje">
+              <MappingFragment StoreEntitySet="Recenzje">
+                <ScalarProperty Name="RecenzjaID" ColumnName="RecenzjaID" />
+                <ScalarProperty Name="DlugaTresc" ColumnName="DlugaTresc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Studia">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Studia">
+              <MappingFragment StoreEntitySet="Studia">
+                <ScalarProperty Name="StudioID" ColumnName="StudioID" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="DataZalozenia" ColumnName="DataZalozenia" />
+                <ScalarProperty Name="IloscPracownikow" ColumnName="IloscPracownikow" />
+                <ScalarProperty Name="Zalozyciel" ColumnName="Zalozyciel" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GAMEWEBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uprawnienia">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Uprawnienia">
+              <MappingFragment StoreEntitySet="Uprawnienia">
+                <ScalarProperty Name="UprawnienieID" ColumnName="UprawnienieID" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="DodawanieWpisow" ColumnName="DodawanieWpisow" />
+                <ScalarProperty Name="DodawanieOcen" ColumnName="DodawanieOcen" />
+                <ScalarProperty Name="UsuwanieWpisowOcen" ColumnName="UsuwanieWpisowOcen" />
+                <ScalarProperty Name="UsuwanieWlasnychWpisowOcen" ColumnName="UsuwanieWlasnychWpisowOcen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzytkownicy">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Uzytkownicy">
+              <MappingFragment StoreEntitySet="Uzytkownicy">
+                <ScalarProperty Name="UzytkownikID" ColumnName="UzytkownikID" />
+                <ScalarProperty Name="UprawnienieID" ColumnName="UprawnienieID" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Plec" ColumnName="Plec" />
+                <ScalarProperty Name="BlokadaKonta" ColumnName="BlokadaKonta" />
+                <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+                <ScalarProperty Name="Zdjecie" ColumnName="Zdjecie" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wpisy">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Wpisy">
+              <MappingFragment StoreEntitySet="Wpisy">
+                <ScalarProperty Name="WpisID" ColumnName="WpisID" />
+                <ScalarProperty Name="GraID" ColumnName="GraID" />
+                <ScalarProperty Name="UzytkownikID" ColumnName="UzytkownikID" />
+                <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+                <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zdjecia">
+            <EntityTypeMapping TypeName="GAMEWEBModel.Zdjecia">
+              <MappingFragment StoreEntitySet="Zdjecia">
+                <ScalarProperty Name="ZdjecieID" ColumnName="ZdjecieID" />
+                <ScalarProperty Name="PlikGraficzny" ColumnName="PlikGraficzny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaleZdjecie">
+            <EntityTypeMapping TypeName="GAMEWEBModel.CaleZdjecie">
+              <MappingFragment StoreEntitySet="CaleZdjecie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UzytkownikID" ColumnName="UzytkownikID" />
+                <ScalarProperty Name="GraID" ColumnName="GraID" />
+                <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+                <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+                <ScalarProperty Name="PlikGraficzny" ColumnName="PlikGraficzny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RankingGier">
+            <EntityTypeMapping TypeName="GAMEWEBModel.RankingGier">
+              <MappingFragment StoreEntitySet="RankingGier">
+                <ScalarProperty Name="GraID" ColumnName="GraID" />
+                <ScalarProperty Name="SredniaOcena" ColumnName="SredniaOcena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="GatunkiGier" TypeName="GAMEWEBModel.GatunkiGier" StoreEntitySet="GatunkiGier">
+            <EndProperty Name="Gatunki">
+              <ScalarProperty Name="GatunekID" ColumnName="GatunekID" />
+            </EndProperty>
+            <EndProperty Name="Gry">
+              <ScalarProperty Name="GraID" ColumnName="GraID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PlatformyGier" TypeName="GAMEWEBModel.PlatformyGier" StoreEntitySet="PlatformyGier">
+            <EndProperty Name="Gry">
+              <ScalarProperty Name="GraID" ColumnName="GraID" />
+            </EndProperty>
+            <EndProperty Name="Platformy">
+              <ScalarProperty Name="PlatformaID" ColumnName="PlatformaID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="GAMEWEBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="GAMEWEBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="GAMEWEBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="GAMEWEBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GAMEWEBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="GAMEWEBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GAMEWEBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="GAMEWEBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="GAMEWEBModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

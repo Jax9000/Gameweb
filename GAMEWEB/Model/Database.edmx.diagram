@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7376f5c0d8ef439c86b59b7cc3dd9852" Name="Diagram1">
+        <EntityTypeShape EntityType="GAMEWEBModel.Gatunki" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Gry" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Komentarze" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.OcenyGier" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.OcenyWpisow" Width="1.5" PointX="13.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Ostrzezenia" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Platformy" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Producenci" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Recenzje" Width="1.5" PointX="10.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Studia" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Uprawnienia" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Uzytkownicy" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Wpisy" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.Zdjecia" Width="1.5" PointX="10.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.CaleZdjecie" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.RankingGier" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Gry__StudioID__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__OcenyGier__GraID__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Wpisy__GraID__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Komentarz__Komen__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Komentarz__WpisI__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__OcenyGier__Uzytk__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__OcenyWpis__Uzytk__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__OcenyWpis__WpisI__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Ostrzezen__Ostrz__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Ostrzezen__Ostrz__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Platformy__Produ__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Recenzje__Recenz__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Uzytkowni__Upraw__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Wpisy__Uzytkowni__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.FK__Zdjecia__Zdjecie__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.GatunkiGier" ManuallyRouted="false" />
+        <AssociationConnector Association="GAMEWEBModel.PlatformyGier" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
