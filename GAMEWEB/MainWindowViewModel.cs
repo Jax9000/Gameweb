@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAMEWEB.Controlls.Presenters;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,15 +19,44 @@ namespace GAMEWEB {
             OnPropertyChanged(() => TabCollection);
         }
 
-        public void AddTab(UserControl controll, string title) {
+        /// <summary>
+        /// Add Tab.
+        /// </summary>
+        /// <param name="controll">User control.</param>
+        /// <param name="title">Tab name.</param>
+        public void AddTab(UserControl control, string title) {
+            if (TabCollection.Any(x => x.Header as string == title))
+                return;
             var newTab = new TabItem();
-            newTab.Content = controll;
+            newTab.Content = control;
             newTab.Header = title;
             TabCollection.Add(newTab);
         }
 
-        public void AddClosableTab(UserControl controll, string title) {
-            // TODO
+        /// <summary>
+        /// Add Tab with close button.
+        /// </summary>
+        /// <param name="control">User control.</param>
+        /// <param name="title">Tab name.</param>
+        public void AddClosableTab(UserControl control, string title) {
+            foreach(var existingTab in TabCollection) {
+                var header = existingTab.Header as ClosableTabHeader;
+                if (header != null)
+                    if (header.labelName.Content as string == title)
+                        return;
+            }
+            var newTab = new TabItem();
+            newTab.Content = control;
+            newTab.Header = new ClosableTabHeader(title, control);
+            TabCollection.Add(newTab);
+        }
+
+        /// <summary>
+        /// Close tab with specific UserControl.
+        /// </summary>
+        /// <param name="tab">Tab's user control.</param>
+        public void RemoveTab(UserControl tab) {
+            TabCollection.Remove(TabCollection.First(x => x.Content == tab));
         }
 
         TabControl tabControl;

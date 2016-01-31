@@ -12,6 +12,9 @@ namespace GAMEWEB {
             get;
             private set;
         }
+        public static string WindowTitle {
+            get { return "GAMEWEB - " + Username; }
+        }
         public static int ID {
             get;
             private set;
@@ -28,8 +31,10 @@ namespace GAMEWEB {
         public static bool CanDeleteAllPosts {
             get { return privileges.UsuwanieWpisowOcen ?? false; }
         }
+        public static bool Connected { get; private set; }
 
         public static void SetSessionUser(Uzytkownicy user) {
+            Connected = true;
             User.user = user;
             Username = user.Nazwa;
             ID = user.UzytkownikID;

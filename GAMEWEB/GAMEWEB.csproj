@@ -62,9 +62,37 @@
       <HintPath>..\packages\MvvmValidation.2.0.2\lib\net40-client\MvvmValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ReactiveProperty, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveProperty.2.4.2\lib\net45\ReactiveProperty.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ReactiveProperty.DataAnnotations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveProperty.2.4.2\lib\net45\ReactiveProperty.DataAnnotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ReactiveProperty.NET45, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveProperty.2.4.2\lib\net45\ReactiveProperty.NET45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -94,10 +122,20 @@
     <Compile Include="Controlls\MainTab.xaml.cs">
       <DependentUpon>MainTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\Presenters\BinaryRatePresenter.xaml.cs">
+      <DependentUpon>BinaryRatePresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\Presenters\ClosableTabHeader.xaml.cs">
+      <DependentUpon>ClosableTabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\Presenters\CommentPresenter.xaml.cs">
+      <DependentUpon>CommentPresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\Presenters\EntryViewModel.cs" />
     <Compile Include="Controlls\Presenters\SmallGamePresenter.xaml.cs">
       <DependentUpon>SmallGamePresenter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\ViewModels\GameTabViewModel.cs" />
+    <Compile Include="DelegateCommand.cs" />
     <Compile Include="Model\CaleZdjecie.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -182,6 +220,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controlls\MainTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\Presenters\BinaryRatePresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\Presenters\ClosableTabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\Presenters\CommentPresenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

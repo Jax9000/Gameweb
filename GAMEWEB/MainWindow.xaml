@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:GAMEWEB"
         xmlns:Controlls="clr-namespace:GAMEWEB.Controlls" x:Class="GAMEWEB.MainWindow"
         mc:Ignorable="d"
-        Title="{Binding Mode=OneWay, Source={x:Static local:User.Username}}" Height="600" Width="1000">
-    <TabControl Name="TabPanel" ItemsSource="{Binding TabCollection}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        Title="{Binding Mode=OneWay, Source={x:Static local:User.WindowTitle}}" Height="600" Width="1000">
+    <TabControl Name="TabPanel"
+                ItemsSource="{Binding TabCollection}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="5">
     </TabControl>
 </Window>

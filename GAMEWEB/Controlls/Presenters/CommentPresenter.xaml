@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="GAMEWEB.Controlls.Presenters.CommentPresenter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GAMEWEB.Controlls.Presenters"
+             mc:Ignorable="d">
+    <StackPanel Margin="5"
+                Background="Beige">
+        <Grid x:Name="Header">
+            <Label x:Name="labelUsername" Margin="10,0,0,0" Content="Username" FontWeight="Bold" FontSize="14.667"/>
+            <local:BinaryRatePresenter HorizontalAlignment="Right" Margin="0,0,10,0"/>
+        </Grid>
+        <TextBlock x:Name="textComment"
+                   Margin="10"
+                   TextWrapping="Wrap"
+                   Text="Template text long long long long long long long long long long long long long long" FontStyle="Italic"/>
+    </StackPanel>
+
+</UserControl>

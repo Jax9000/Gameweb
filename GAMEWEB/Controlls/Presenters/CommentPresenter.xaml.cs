@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAMEWEB.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,20 +14,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GAMEWEB {
+namespace GAMEWEB.Controlls.Presenters {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CommentPresenter.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
-            var login = new Login();
-            login.ShowDialog();
+    public partial class CommentPresenter : UserControl {
+        public CommentPresenter(Komentarze comment) {
             InitializeComponent();
-            if (!User.Connected)
-                Close();
-            var viewModel = new MainWindowViewModel(TabPanel);
+
+            viewModel = new EntryViewModel(comment.Wpisy);
             DataContext = viewModel;
-            App.MainWindowManager = viewModel;
+
+
+
+            labelUsername.Content = comment.Wpisy.Uzytkownicy.Nazwa;
+            textComment.Text = comment.Tresc;
         }
+
+        EntryViewModel viewModel;
     }
 }

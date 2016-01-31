@@ -28,7 +28,7 @@ namespace GAMEWEB.Controlls.Presenters {
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
-            App.MainWindowManager.AddTab(new GameTab(game), game.Tytul);
+            App.MainWindowManager.AddClosableTab(new GameTab(game), game.Tytul);
         }
 
         Model.Gry game;

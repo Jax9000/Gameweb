@@ -13,20 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GAMEWEB {
+namespace GAMEWEB.Controlls.Presenters {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BinaryRatePresenter.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
-            var login = new Login();
-            login.ShowDialog();
+    public partial class BinaryRatePresenter : UserControl {
+        public BinaryRatePresenter() {
             InitializeComponent();
-            if (!User.Connected)
-                Close();
-            var viewModel = new MainWindowViewModel(TabPanel);
-            DataContext = viewModel;
-            App.MainWindowManager = viewModel;
         }
     }
 }
