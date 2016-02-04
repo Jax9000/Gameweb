@@ -15,10 +15,10 @@ namespace GAMEWEB.Model
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class GAMEWEBEntities3 : DbContext
+    public partial class GAMEWEBEntities : DbContext
     {
-        public GAMEWEBEntities3()
-            : base("name=GAMEWEBEntities3")
+        public GAMEWEBEntities()
+            : base("name=GAMEWEBEntities")
         {
         }
     
@@ -43,6 +43,7 @@ namespace GAMEWEB.Model
         public virtual DbSet<Wpisy> Wpisy { get; set; }
         public virtual DbSet<Zdjecia> Zdjecia { get; set; }
         public virtual DbSet<CaleZdjecie> CaleZdjecie { get; set; }
+        public virtual DbSet<GameInfo> GameInfo { get; set; }
         public virtual DbSet<RankingGier> RankingGier { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

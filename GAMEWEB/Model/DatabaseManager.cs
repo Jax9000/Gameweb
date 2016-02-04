@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace GAMEWEB.Model {
     public static class DatabaseManager {
 
-        public static GAMEWEBEntities3 Entities {
+        public static GAMEWEBEntities Entities {
             get { return entities; }
         }
 
@@ -17,7 +17,7 @@ namespace GAMEWEB.Model {
         }
 
 
-        static GAMEWEBEntities3 entities = new GAMEWEBEntities3();
+        static GAMEWEBEntities entities = new GAMEWEBEntities();
 
 
     }

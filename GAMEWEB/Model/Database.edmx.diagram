@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7376f5c0d8ef439c86b59b7cc3dd9852" Name="Diagram1">
+      <Diagram DiagramId="62e5b97c2573470fb19f3717141f4406" Name="Diagram1">
         <EntityTypeShape EntityType="GAMEWEBModel.Gatunki" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GAMEWEBModel.Gry" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GAMEWEBModel.Komentarze" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
@@ -21,7 +21,8 @@
         <EntityTypeShape EntityType="GAMEWEBModel.Wpisy" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GAMEWEBModel.Zdjecia" Width="1.5" PointX="10.5" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GAMEWEBModel.CaleZdjecie" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GAMEWEBModel.RankingGier" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.GameInfo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GAMEWEBModel.RankingGier" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="GAMEWEBModel.FK__Gry__StudioID__29572725" ManuallyRouted="false" />
         <AssociationConnector Association="GAMEWEBModel.FK__OcenyGier__GraID__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="GAMEWEBModel.FK__Wpisy__GraID__2F10007B" ManuallyRouted="false" />

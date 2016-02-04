@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="GAMEWEB.Controlls.SearchRatePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GAMEWEB.Controlls"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="500">
+    <Grid>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Label Margin="10" Content="Wybierz znak: " VerticalAlignment="Center"/>
+            <ComboBox x:Name="comboBox" Margin="10" Height="22">
+                <ComboBoxItem Content="+"/>
+                <ComboBoxItem Content="-"/>
+            </ComboBox>
+            <Label Margin="10" Content="Wpisz wartość: " VerticalAlignment="Center"/>
+            <TextBox Margin="10" x:Name="textBoxValue" Width="50" Height="22" MaxLength="5" MaxLines="1"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

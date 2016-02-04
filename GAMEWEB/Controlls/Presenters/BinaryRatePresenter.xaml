@@ -8,8 +8,8 @@
 
     <StackPanel Orientation="Horizontal" Height="20">
         <Label x:Name="labelRate" Content="{Binding BinaryRate}" Margin="0, -3, 0, 0" VerticalAlignment="Top"/>
-        <Button Width="10" Margin="5, 5, 1, 5" Background="#FF96FFB3" Command="{Binding VotePlusCommand}" IsEnabled="{Binding CanVote}"/>
-        <Button Width="10" Margin="1, 5, 0, 5" Background="#FFFF9090" Command="{Binding VoteMinusCommand}" IsEnabled="{Binding CanVote}"/>
+        <Button Width="10" Margin="5, 5, 1, 5" Background="#FFFF9090" Command="{Binding VoteMinusCommand}" IsEnabled="{Binding CanVote}"/>
+        <Button Width="10" Margin="1, 5, 0, 5" Background="#FF96FFB3" Command="{Binding VotePlusCommand}" IsEnabled="{Binding CanVote}"/>
     </StackPanel>
 
 </UserControl>

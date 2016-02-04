@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GAMEWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GAMEWEBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gatunki">
           <Key>
             <PropertyRef Name="GatunekID" />
@@ -181,6 +181,20 @@ warning 6002: The table/view 'GAMEWEB.dbo.CaleZdjecie' does not have a primary k
           <Property Name="Tytul" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="DataDodania" Type="date" Nullable="false" />
           <Property Name="PlikGraficzny" Type="varbinary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GAMEWEB.dbo.GameInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GameInfo">
+          <Key>
+            <PropertyRef Name="Tytul" />
+            <PropertyRef Name="DataWydania" />
+            <PropertyRef Name="Studio" />
+          </Key>
+          <Property Name="Tytul" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataWydania" Type="date" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2000" />
+          <Property Name="SredniaOcena" Type="float" />
+          <Property Name="Studio" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -478,6 +492,15 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
     [CaleZdjecie].[PlikGraficzny] AS [PlikGraficzny]
     FROM [dbo].[CaleZdjecie] AS [CaleZdjecie]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="GameInfo" EntityType="Self.GameInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GameInfo].[Tytul] AS [Tytul], 
+    [GameInfo].[DataWydania] AS [DataWydania], 
+    [GameInfo].[Opis] AS [Opis], 
+    [GameInfo].[SredniaOcena] AS [SredniaOcena], 
+    [GameInfo].[Studio] AS [Studio]
+    FROM [dbo].[GameInfo] AS [GameInfo]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="RankingGier" EntityType="Self.RankingGier" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [RankingGier].[GraID] AS [GraID], 
@@ -561,7 +584,8 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
             <End Role="Zdjecia" EntitySet="Zdjecia" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GAMEWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -758,6 +782,18 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
           <Property Name="DataDodania" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PlikGraficzny" Type="Binary" MaxLength="1" FixedLength="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="GameInfo">
+          <Key>
+            <PropertyRef Name="Tytul" />
+            <PropertyRef Name="DataWydania" />
+            <PropertyRef Name="Studio" />
+          </Key>
+          <Property Name="Tytul" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataWydania" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Opis" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="SredniaOcena" Type="Double" />
+          <Property Name="Studio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="RankingGier">
           <Key>
             <PropertyRef Name="GraID" />
@@ -953,7 +989,7 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
           <End Role="Gry" Type="Self.Gry" Multiplicity="*" />
           <End Role="Platformy" Type="Self.Platformy" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="GAMEWEBEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GAMEWEBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Gatunki" EntityType="Self.Gatunki" />
           <EntitySet Name="Gry" EntityType="Self.Gry" />
           <EntitySet Name="Komentarze" EntityType="Self.Komentarze" />
@@ -970,6 +1006,7 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
           <EntitySet Name="Wpisy" EntityType="Self.Wpisy" />
           <EntitySet Name="Zdjecia" EntityType="Self.Zdjecia" />
           <EntitySet Name="CaleZdjecie" EntityType="Self.CaleZdjecie" />
+          <EntitySet Name="GameInfo" EntityType="Self.GameInfo" />
           <EntitySet Name="RankingGier" EntityType="Self.RankingGier" />
           <AssociationSet Name="FK__Gry__StudioID__29572725" Association="Self.FK__Gry__StudioID__29572725">
             <End Role="Studia" EntitySet="Studia" />
@@ -1086,7 +1123,7 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GAMEWEBModelStoreContainer" CdmEntityContainer="GAMEWEBEntities3">
+        <EntityContainerMapping StorageEntityContainer="GAMEWEBModelStoreContainer" CdmEntityContainer="GAMEWEBEntities">
           <EntitySetMapping Name="Gatunki">
             <EntityTypeMapping TypeName="GAMEWEBModel.Gatunki">
               <MappingFragment StoreEntitySet="Gatunki">
@@ -1253,6 +1290,17 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
                 <ScalarProperty Name="Tytul" ColumnName="Tytul" />
                 <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
                 <ScalarProperty Name="PlikGraficzny" ColumnName="PlikGraficzny" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameInfo">
+            <EntityTypeMapping TypeName="GAMEWEBModel.GameInfo">
+              <MappingFragment StoreEntitySet="GameInfo">
+                <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+                <ScalarProperty Name="DataWydania" ColumnName="DataWydania" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="SredniaOcena" ColumnName="SredniaOcena" />
+                <ScalarProperty Name="Studio" ColumnName="Studio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

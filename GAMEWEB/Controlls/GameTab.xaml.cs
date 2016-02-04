@@ -26,6 +26,11 @@ namespace GAMEWEB.Controlls {
 
             this.game = game;
             labelTitle.Content = game.Tytul;
+            string genres = "";
+            foreach(var genre in game.Gatunki.Select(x => x.Nazwa)) {
+                genres += genre + " ";
+            }
+            labelGenre.Content = genres;
             labelRate1.Content = game.OcenyGier.Average(x => x.OcenaOgolna).ToString();
             labelRate2.Content = game.OcenyGier.Average(x => x.Grafika).ToString();
             labelRate3.Content = game.OcenyGier.Average(x => x.Fabula).ToString();

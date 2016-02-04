@@ -119,6 +119,7 @@
     <Compile Include="Controlls\GameTab.xaml.cs">
       <DependentUpon>GameTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\ISearchDataProvider.cs" />
     <Compile Include="Controlls\MainTab.xaml.cs">
       <DependentUpon>MainTab.xaml</DependentUpon>
     </Compile>
@@ -135,6 +136,23 @@
     <Compile Include="Controlls\Presenters\SmallGamePresenter.xaml.cs">
       <DependentUpon>SmallGamePresenter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\SearchGenrePanel.xaml.cs">
+      <DependentUpon>SearchGenrePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\SearchNamePanel.xaml.cs">
+      <DependentUpon>SearchNamePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\SearchRatePanel.xaml.cs">
+      <DependentUpon>SearchRatePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\SearchStudioPanel.xaml.cs">
+      <DependentUpon>SearchStudioPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\SearchViewModel.cs" />
+    <Compile Include="Controlls\EnumMatchToBooleanConverter.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="Model\CaleZdjecie.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -160,6 +178,9 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Model\GameInfo.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Gatunki.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -236,6 +257,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controlls\Presenters\SmallGamePresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\Search.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\SearchGenrePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\SearchNamePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\SearchRatePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\SearchStudioPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +360,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
