@@ -13,21 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GAMEWEB {
+namespace GAMEWEB.Controlls {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AdminTab.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
-            var login = new Login();
-            login.ShowDialog();
+    public partial class AdminTab : UserControl {
+        public AdminTab() {
             InitializeComponent();
-            if (!User.Connected)
-                Close();
-            var viewModel = new MainWindowViewModel(TabPanel);
+            viewModel = new AdminViewModel();
             DataContext = viewModel;
-            App.MainWindowManager = viewModel;
-            
+
         }
+
+        AdminViewModel viewModel;
     }
 }

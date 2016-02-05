@@ -26,10 +26,10 @@ namespace GAMEWEB {
         private void button_Click(object sender, RoutedEventArgs e) {
             if (DatabaseManager.Entities.Uzytkownicy
                 .Any(x => x.Nazwa == textBox_login.Text
-                && x.Haslo == textBox_password.Text)) {
+                && x.Haslo == textBox_password.Password)) {
                 User.SetSessionUser(
                     DatabaseManager.Entities.Uzytkownicy
-                    .First(x => x.Nazwa == textBox_login.Text && x.Haslo == textBox_password.Text)
+                    .First(x => x.Nazwa == textBox_login.Text && x.Haslo == textBox_password.Password)
                     );
 
                 Close();

@@ -116,6 +116,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="Controlls\AdminTab.xaml.cs">
+      <DependentUpon>AdminTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\AdminViewModel.cs" />
     <Compile Include="Controlls\GameTab.xaml.cs">
       <DependentUpon>GameTab.xaml</DependentUpon>
     </Compile>
@@ -236,6 +240,10 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Page Include="Controlls\AdminTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controlls\GameTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
