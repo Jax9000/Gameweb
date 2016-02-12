@@ -19,16 +19,20 @@ namespace GAMEWEB.Controlls.Presenters {
     /// Interaction logic for CommentPresenter.xaml
     /// </summary>
     public partial class CommentPresenter : UserControl {
-        public CommentPresenter(Komentarze comment) {
+        /// <summary>
+        /// It's designed to show komentarze and recenzje
+        /// </summary>
+        /// <param name="wpis"></param>
+        public CommentPresenter(IWpis wpis) {
             InitializeComponent();
 
-            viewModel = new EntryViewModel(comment.Wpisy);
+            viewModel = new EntryViewModel(wpis.Wpisy);
             DataContext = viewModel;
 
 
 
-            labelUsername.Content = comment.Wpisy.Uzytkownicy.Nazwa;
-            textComment.Text = comment.Tresc;
+            labelUsername.Content = wpis.Wpisy.Uzytkownicy.Nazwa;
+            textComment.Text = wpis.Tresc;
         }
 
         EntryViewModel viewModel;

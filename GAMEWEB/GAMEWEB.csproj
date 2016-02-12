@@ -127,6 +127,9 @@
     <Compile Include="Controlls\MainTab.xaml.cs">
       <DependentUpon>MainTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\NewReviewWindow.xaml.cs">
+      <DependentUpon>NewReviewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\Presenters\BinaryRatePresenter.xaml.cs">
       <DependentUpon>BinaryRatePresenter.xaml</DependentUpon>
     </Compile>
@@ -159,22 +162,22 @@
     <Compile Include="Controlls\EnumMatchToBooleanConverter.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="Model\CaleZdjecie.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Database.Context.cs">
+    <Compile Include="Model\database.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database.Context.tt</DependentUpon>
+      <DependentUpon>database.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Database.cs">
+    <Compile Include="Model\database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Database.Designer.cs">
+    <Compile Include="Model\database.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database.edmx</DependentUpon>
+      <DependentUpon>database.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\DatabaseManager.cs" />
     <Compile Include="Model\EntitiesExtensions.cs" />
@@ -183,61 +186,55 @@
     </Compile>
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Model\GameInfo.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Gatunki.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Gry.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Komentarze.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\OcenyGier.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\OcenyWpisow.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Ostrzezenia.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Platformy.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Producenci.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\RankingGier.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Recenzje.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Studia.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagrams.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Uprawnienia.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Uzytkownicy.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Wpisy.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Zdjecia.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
     <Page Include="Controlls\AdminTab.xaml">
@@ -249,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controlls\MainTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\NewReviewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -324,12 +325,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\Database.edmx">
+    <EntityDeploy Include="Model\database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Database.Designer.cs</LastGenOutput>
+      <LastGenOutput>database.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Database.edmx.diagram">
-      <DependentUpon>Database.edmx</DependentUpon>
+    <None Include="Model\database.edmx.diagram">
+      <DependentUpon>database.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -346,15 +347,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database files\CreateGAMEWEB_DD.sql" />
-    <Content Include="Model\Database.Context.tt">
+    <Content Include="Model\database.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database.edmx</DependentUpon>
-      <LastGenOutput>Database.Context.cs</LastGenOutput>
+      <DependentUpon>database.edmx</DependentUpon>
+      <LastGenOutput>database.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\Database.tt">
+    <Content Include="Model\database.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database.edmx</DependentUpon>
-      <LastGenOutput>Database.cs</LastGenOutput>
+      <DependentUpon>database.edmx</DependentUpon>
+      <LastGenOutput>database.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

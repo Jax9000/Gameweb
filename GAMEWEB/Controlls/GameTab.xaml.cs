@@ -37,12 +37,22 @@ namespace GAMEWEB.Controlls {
             labelDescription.Content = game.Opis;
 
             RefreshComments();
+            RefreshReviews();
         }
 
         void RefreshComments() {
             Comments.Children.Clear();
             foreach (var comment in DatabaseManager.Entities.Komentarze.Where(x => x.Wpisy.Gry.GraID == game.GraID)) {
                 Comments.Children.Add(new CommentPresenter(comment));
+            }
+        }
+
+        private void RefreshReviews()
+        {
+            Reviews.Children.Clear();
+            foreach(var review in DatabaseManager.Entities.Recenzje.Where(x=> x.Wpisy.Gry.GraID == game.GraID))
+            {
+                Reviews.Children.Add(new CommentPresenter(review));
             }
         }
 
@@ -68,6 +78,11 @@ namespace GAMEWEB.Controlls {
 
             textBoxNewComment.Text = "";
             RefreshComments();
+        }
+
+        private void AddReviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            new NewReviewWindow(game).Show();
         }
 
         Gry game;
