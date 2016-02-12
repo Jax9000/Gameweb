@@ -367,6 +367,8 @@
     <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DatabaseScripts\CreateGAMEWEB_DD.sql" />
+    <Content Include="DatabaseScripts\on_new_warrning.sql" />
     <Content Include="Model\Database.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Database.edmx</DependentUpon>
