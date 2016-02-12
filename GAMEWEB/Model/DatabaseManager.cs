@@ -16,9 +16,10 @@ namespace GAMEWEB.Model {
             get { return entities.Uzytkownicy; }
         }
 
+        public static void Save() {
+            entities.SaveChanges();
+        }
 
         static GAMEWEBEntities entities = new GAMEWEBEntities();
-
-
     }
 }

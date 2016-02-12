@@ -56,15 +56,16 @@ namespace GAMEWEB.Controlls {
                 UzytkownikID = User.ID,
                 Tytul = "Super komentarz"
             };
+
             DatabaseManager.Entities.Wpisy.Add(newEntry);
-            DatabaseManager.Entities.SaveChanges();
+            DatabaseManager.Save();
 
             var newComments = new Komentarze() {
                 KomentarzID = newEntry.WpisID,
                 Tresc = textBoxNewComment.Text,
             };
             DatabaseManager.Entities.Komentarze.Add(newComments);
-            DatabaseManager.Entities.SaveChanges();
+            DatabaseManager.Save();
 
             textBoxNewComment.Text = "";
             RefreshComments();
