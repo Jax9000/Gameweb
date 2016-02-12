@@ -72,14 +72,11 @@ namespace GAMEWEB.Controlls
             MessageBoxButton button = MessageBoxButton.YesNo;
             MessageBoxImage icon = MessageBoxImage.Warning;
             MessageBoxResult rsltMessageBox = MessageBox.Show(messageBoxText, caption, button, icon);
-           if(rsltMessageBox == MessageBoxResult.Yes)
+            if(rsltMessageBox == MessageBoxResult.Yes)
             {
                 return true;
             }
-           else
-            {
-                return false;
-            }
+
             return false;
         }
 

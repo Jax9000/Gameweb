@@ -62,14 +62,14 @@
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="Recenzje" Margin="-3,0,3,0">
+            <TabItem Header="Recenzje" >
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="28*"/>
                         <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
                     <ScrollViewer Margin="10,6,10,0" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
-                        <StackPanel Name="Reviews" Height="186" Width="432" Margin="30, 5, 10, 5" CanVerticallyScroll="True"/>
+                        <StackPanel Name="Reviews" CanVerticallyScroll="True"/>
                     </ScrollViewer>
                     <Button x:Name="AddReviewButton" Content="Dodaj recenzje" Margin="10" Grid.Row="1" Click="AddReviewButton_Click"/>
                 </Grid>
