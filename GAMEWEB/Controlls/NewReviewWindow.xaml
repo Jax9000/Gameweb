@@ -1,0 +1,25 @@
+﻿<Window x:Class="GAMEWEB.Controlls.NewReviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GAMEWEB.Controlls"
+        mc:Ignorable="d"
+        Title="Edytor recenzji" Height="500" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <RichTextBox x:Name="richTextBox" Margin="10,10,10,49" AcceptsTab="True">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="AcceptButton" Content="Zatwierdź i wyślij" Margin="678,425,10,10" Click="AcceptButton_Click"/>
+    </Grid>
+</Window>

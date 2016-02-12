@@ -19,6 +19,7 @@ namespace GAMEWEB.Controlls.Presenters {
     /// Interaction logic for CommentPresenter.xaml
     /// </summary>
     public partial class CommentPresenter : UserControl {
+
         public CommentPresenter(Komentarze comment) {
             InitializeComponent();
 
@@ -30,7 +31,20 @@ namespace GAMEWEB.Controlls.Presenters {
             labelUsername.Content = comment.Wpisy.Uzytkownicy.Nazwa;
             textComment.Text = comment.Tresc;
         }
+        
+        // chcicalem uzyc interfejsu do tego ale trzeba by edytowac klasy od entity
+        public CommentPresenter(Recenzje review)
+        {
+            InitializeComponent();
 
-        EntryViewModel viewModel;
+            viewModel = new EntryViewModel(review.Wpisy);
+            DataContext = viewModel;
+
+
+
+            labelUsername.Content = review.Wpisy.Uzytkownicy.Nazwa;
+            textComment.Text = review.DlugaTresc;
+        }
+            EntryViewModel viewModel;
     }
 }

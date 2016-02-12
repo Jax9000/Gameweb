@@ -27,15 +27,28 @@ namespace GAMEWEB {
             if (DatabaseManager.Entities.Uzytkownicy
                 .Any(x => x.Nazwa == textBox_login.Text
                 && x.Haslo == textBox_password.Password)) {
-                User.SetSessionUser(
-                    DatabaseManager.Entities.Uzytkownicy
-                    .First(x => x.Nazwa == textBox_login.Text && x.Haslo == textBox_password.Password)
-                    );
-
-                Close();
+                Uzytkownicy user = DatabaseManager.Entities.Uzytkownicy.First(
+                    x => x.Nazwa == textBox_login.Text && x.Haslo == textBox_password.Password);
+                if (user.BlokadaKonta)
+                {
+                    ShowNotifiactionDialog("Konto o danym loginie zostało zablokowane");
+                }
+                    else
+                {
+                    User.SetSessionUser(user);
+                    Close();
+                }
             } else {
-                Console.WriteLine("Can't login.");
+                ShowNotifiactionDialog("Wprowadzono zły login lub hasło");
             }
+        }
+
+        private void ShowNotifiactionDialog(string message)
+        {
+            string caption = "Błąd logowania";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxResult rsltMessageBox = MessageBox.Show(message, caption, button, icon);
         }
     }
 }
