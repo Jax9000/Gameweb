@@ -19,22 +19,32 @@ namespace GAMEWEB.Controlls.Presenters {
     /// Interaction logic for CommentPresenter.xaml
     /// </summary>
     public partial class CommentPresenter : UserControl {
-        /// <summary>
-        /// It's designed to show komentarze and recenzje
-        /// </summary>
-        /// <param name="wpis"></param>
-        public CommentPresenter(IWpis wpis) {
+
+        public CommentPresenter(Komentarze comment) {
             InitializeComponent();
 
-            viewModel = new EntryViewModel(wpis.Wpisy);
+            viewModel = new EntryViewModel(comment.Wpisy);
             DataContext = viewModel;
 
 
 
-            labelUsername.Content = wpis.Wpisy.Uzytkownicy.Nazwa;
-            textComment.Text = wpis.Tresc;
+            labelUsername.Content = comment.Wpisy.Uzytkownicy.Nazwa;
+            textComment.Text = comment.Tresc;
         }
+        
+        // chcicalem uzyc interfejsu do tego ale trzeba by edytowac klasy od entity
+        public CommentPresenter(Recenzje review)
+        {
+            InitializeComponent();
 
-        EntryViewModel viewModel;
+            viewModel = new EntryViewModel(review.Wpisy);
+            DataContext = viewModel;
+
+
+
+            labelUsername.Content = review.Wpisy.Uzytkownicy.Nazwa;
+            textComment.Text = review.DlugaTresc;
+        }
+            EntryViewModel viewModel;
     }
 }
