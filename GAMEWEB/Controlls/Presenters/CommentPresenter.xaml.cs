@@ -32,7 +32,7 @@ namespace GAMEWEB.Controlls.Presenters {
             textComment.Text = comment.Tresc;
         }
         
-        // chcicalem uzyc interfejsu do tego ale trzeba by edytowac klasy od entity
+        // chcicalem uzyc interfejsu do tego ale trzeba by edytowac klasy od entity :c
         public CommentPresenter(Recenzje review)
         {
             InitializeComponent();

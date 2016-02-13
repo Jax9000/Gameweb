@@ -434,6 +434,9 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="remove_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -1076,6 +1079,9 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
             <End Role="Gry" EntitySet="Gry" />
             <End Role="Platformy" EntitySet="Platformy" />
           </AssociationSet>
+          <FunctionImport Name="remove_user">
+            <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1328,6 +1334,7 @@ warning 6002: The table/view 'GAMEWEB.dbo.RankingGier' does not have a primary k
               <ScalarProperty Name="PlatformaID" ColumnName="PlatformaID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="remove_user" FunctionName="GAMEWEBModel.Store.remove_user" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="GAMEWEBModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="GAMEWEBModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="GAMEWEBModel.Store.sp_dropdiagram" />

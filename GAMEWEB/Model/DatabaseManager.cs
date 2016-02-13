@@ -20,6 +20,10 @@ namespace GAMEWEB.Model {
             entities.SaveChanges();
         }
 
+        public static void RemoveUser(int id) {
+            Entities.remove_user(id.ToString());
+        }
+
         static GAMEWEBEntities entities = new GAMEWEBEntities();
     }
 }

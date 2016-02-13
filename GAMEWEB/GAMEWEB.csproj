@@ -160,7 +160,11 @@
     </Compile>
     <Compile Include="Controlls\SearchViewModel.cs" />
     <Compile Include="Controlls\EnumMatchToBooleanConverter.cs" />
+    <Compile Include="Controlls\UserTab.xaml.cs">
+      <DependentUpon>UserTab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="DialogManager.cs" />
     <Compile Include="Model\CaleZdjecie.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -292,6 +296,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controlls\SearchStudioPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\UserTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -27,7 +27,9 @@
                     <DataGrid ItemsSource="{Binding Users}"
                               CanUserAddRows="False"
                               CanUserDeleteRows="True"
-                              AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                              SelectionMode="Single"
+                              AutoGenerateColumns="False" Grid.ColumnSpan="2"
+                              SelectedItem="{Binding SelectedUser}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Path=UzytkownikID}" Width="25"/>
                             <DataGridTextColumn Header="Nazwa użytkownika" IsReadOnly="True" Binding="{Binding Path=Nazwa}" Width="150"/>
@@ -39,42 +41,46 @@
                     <StackPanel Background="#FFA5FF97" Grid.Row="1" Grid.Column="0" Margin="10">
                         <Label Margin="10" Content="Dodaj użytkownika" HorizontalAlignment="Center" FontWeight="Bold"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label Content="* Nazwa:" Width="100"/>
-                            <TextBox x:Name="textUsername" HorizontalAlignment="Stretch" Width="150"/>
+                            <Label Content="* Nazwa:" Width="100" Height="23"/>
+                            <TextBox x:Name="textUsername" HorizontalAlignment="Stretch" Width="150" Text="{Binding NewUserName}" Height="23"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label Content="* Hasło:" Width="100"/>
-                            <PasswordBox x:Name="textPassword" HorizontalAlignment="Stretch" Width="150"/>
+                            <Label Content="* Hasło:" Width="100" Height="23"/>
+                            <TextBox x:Name="textPassword" HorizontalAlignment="Stretch" Width="150" Text="{Binding NewUserPassword}" Height="23"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label Content="* Uprawnienia:" Width="100"/>
-                            <ComboBox x:Name="comboBoxPermission" HorizontalAlignment="Stretch" Width="150" ItemsSource="{Binding Permissions}"/>
+                            <Label Content="* Email:" Width="100" Height="23"/>
+                            <TextBox x:Name="emailPassword" HorizontalAlignment="Stretch" Width="150" Text="{Binding NewUserEmail}" Height="23"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label Content="* Płeć:" Width="100"/>
-                            <ComboBox x:Name="comboBoxSex" HorizontalAlignment="Stretch" Width="150">
+                            <Label Content="* Uprawnienia:" Width="100" Height="25"/>
+                            <ComboBox x:Name="comboBoxPermission" HorizontalAlignment="Stretch" Width="150" ItemsSource="{Binding PermissionsTypes}" SelectedValue="{Binding NewUserPermission}" SelectedIndex="0" Height="25"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="* Płeć:" Width="100" Height="25"/>
+                            <ComboBox x:Name="comboBoxSex" HorizontalAlignment="Stretch" Width="150" SelectedValue="{Binding NewUserSex}" SelectedIndex="0" Height="25">
                                 <ComboBoxItem Content="K"/>
                                 <ComboBoxItem Content="M"/>
                             </ComboBox>
                         </StackPanel>
-                        
+
                         <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label Content="Data urodzenia:" Width="100"/>
-                            <DatePicker x:Name="dateBorn" HorizontalAlignment="Stretch" Width="150"/>
+                            <Label Content="Data urodzenia:" Width="100" Height="25"/>
+                            <DatePicker x:Name="dateBorn" HorizontalAlignment="Stretch" Width="150" SelectedDate="{Binding NewUserBirthdate}" Height="25"/>
                         </StackPanel>
-                        <Button Margin="10" Content="Dodaj użytkownika" Width="250"/>
-                        
-                        
+                        <Button Margin="10" Content="Dodaj użytkownika" Width="250" Command="{Binding AddUserCommand}"/>
+
+
                     </StackPanel>
-                    
+
 
                     <StackPanel Background="#FFFFC673" Grid.Row="1" Grid.Column="1" Margin="10">
                         <Label Margin="10" Content="Usuń użytkownika" HorizontalAlignment="Center" FontWeight="Bold"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label Content="* Nazwa:" Width="100"/>
-                            <TextBox x:Name="textUsernameDelete" HorizontalAlignment="Stretch" Width="150"/>
+                            <TextBox x:Name="textUsernameDelete" Text="{Binding UserToDeleteName}" HorizontalAlignment="Stretch" Width="150" />
                         </StackPanel>
-                        <Button Margin="10" Content="Usuń" Width="100"/>
+                        <Button Margin="10" Content="Usuń" Width="100" Command="{Binding DeleteUserCommand}"/>
                     </StackPanel>
 
                 </Grid>
