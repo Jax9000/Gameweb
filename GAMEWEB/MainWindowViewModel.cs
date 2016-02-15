@@ -17,7 +17,8 @@ namespace GAMEWEB {
             TabCollection = new ObservableCollection<TabItem>();
             AddTab(new Controlls.MainTab(), "Strona główna");
             AddTab(new Controlls.Search(), "Wyszukiwanie");
-            AddTab(new Controlls.AdminTab(), "Administracja");
+            if(User.CanDeleteAllPosts)
+                AddTab(new Controlls.AdminTab(), "Administracja");
             AddTab(new Controlls.UserTab(), "Panel użytkownika");
             OnPropertyChanged(() => TabCollection);
         }
