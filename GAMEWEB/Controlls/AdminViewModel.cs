@@ -78,8 +78,26 @@ namespace GAMEWEB.Controlls {
         }
 
         private void AddUser(object obj) {
-
             try {
+
+                Action<string, string> okString =
+                    (str, msg) => {
+                        if (str == null || str == "")
+                            throw new EValidData(msg);
+                    };
+
+                
+                okString(NewUserName, "Niepoprawna nazwa użytkownika.");
+                okString(NewUserPassword, "Niepoprawne hasło.");
+                okString(NewUserEmail, "Niepoprawny emial.");
+                okString(NewUserPermission, "Podaj pozwolenia.");
+                if (!NewUserEmail.Contains("@") || !NewUserEmail.Contains("."))
+                    throw new EValidData("Niepoprawna forma email (brak @ / .).");
+
+                if (DatabaseManager.Users.Any(x => x.Nazwa == NewUserName))
+                    throw new EValidData("Użytkownik o podanej nazwie już istnieje.");
+
+
                 var user = new Uzytkownicy() {
                     Nazwa = NewUserName,
                     Plec = NewUserSex.Content.ToString(),
@@ -87,11 +105,14 @@ namespace GAMEWEB.Controlls {
                     Haslo = NewUserPassword,
                     Email = NewUserEmail,
                     DataUrodzenia = NewUserBirthdate,
+                    UprawnienieID = (NewUserPermission == "Admin") ? 1 : 3
                 };
+
                 DatabaseManager.Users.Add(user);
                 DatabaseManager.Save();
-
                 UpdateUsers();
+            } catch (EValidData e) {
+                DialogManager.ShowErrorDialog("Błędne dane", e.Message);
             } catch (Exception) {
                 DialogManager.ShowErrorDialog("Błędne dane", "Sprawdź wpisane dane użytkownika");
             }
@@ -100,5 +121,9 @@ namespace GAMEWEB.Controlls {
 
         private string userToDelete;
         private Uzytkownicy selectedUser;
+    }
+
+    public class EValidData : Exception {
+        public EValidData(string msg) : base(msg) { }
     }
 }

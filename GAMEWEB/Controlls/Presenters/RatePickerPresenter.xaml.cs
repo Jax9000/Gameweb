@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAMEWEB.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,19 +14,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GAMEWEB.Controlls {
+namespace GAMEWEB.Controlls.Presenters {
     /// <summary>
-    /// Interaction logic for UserTab.xaml
+    /// Interaction logic for RatePickerPresenter.xaml
     /// </summary>
-    public partial class UserTab : UserControl {
-        public UserTab() {
+    public partial class RatePickerPresenter : UserControl {
+
+        public Gry Game {
+            set { viewModel.Game = value; }
+        }
+
+        public RatePickerPresenter() {
             InitializeComponent();
-
-
-            viewModel = new UserViewModel();
+            viewModel = new RatePickerViewModel();
             DataContext = viewModel;
         }
 
-        UserViewModel viewModel;
+        private RatePickerViewModel viewModel;
     }
 }

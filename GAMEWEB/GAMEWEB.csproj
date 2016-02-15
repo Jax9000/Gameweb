@@ -140,6 +140,10 @@
       <DependentUpon>CommentPresenter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controlls\Presenters\EntryViewModel.cs" />
+    <Compile Include="Controlls\Presenters\RatePickerPresenter.xaml.cs">
+      <DependentUpon>RatePickerPresenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\Presenters\RatePickerViewModel.cs" />
     <Compile Include="Controlls\Presenters\SmallGamePresenter.xaml.cs">
       <DependentUpon>SmallGamePresenter.xaml</DependentUpon>
     </Compile>
@@ -163,6 +167,7 @@
     <Compile Include="Controlls\UserTab.xaml.cs">
       <DependentUpon>UserTab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\UserViewModel.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="DialogManager.cs" />
     <Compile Include="Model\CaleZdjecie.cs">
@@ -247,6 +252,7 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="Validation\VEmail.cs" />
     <Page Include="Controlls\AdminTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -272,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controlls\Presenters\CommentPresenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controlls\Presenters\RatePickerPresenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

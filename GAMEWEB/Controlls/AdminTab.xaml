@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GAMEWEB.Controlls"
+             xmlns:valid="clr-namespace:GAMEWEB.Validation"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="700">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350*"/>
@@ -50,15 +52,16 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label Content="* Email:" Width="100" Height="23"/>
-                            <TextBox x:Name="emailPassword" HorizontalAlignment="Stretch" Width="150" Text="{Binding NewUserEmail}" Height="23"/>
+                            <TextBox x:Name="emailPassword" HorizontalAlignment="Stretch" Text="{Binding NewUserEmail}" Width="150" Height="23">
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label Content="* Uprawnienia:" Width="100" Height="25"/>
-                            <ComboBox x:Name="comboBoxPermission" HorizontalAlignment="Stretch" Width="150" ItemsSource="{Binding PermissionsTypes}" SelectedValue="{Binding NewUserPermission}" SelectedIndex="0" Height="25"/>
+                            <ComboBox x:Name="comboBoxPermission" HorizontalAlignment="Stretch" Width="150" ItemsSource="{Binding PermissionsTypes}" SelectedIndex="0" SelectedValue="{Binding NewUserPermission, Mode=OneWayToSource}" Height="25"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label Content="* Płeć:" Width="100" Height="25"/>
-                            <ComboBox x:Name="comboBoxSex" HorizontalAlignment="Stretch" Width="150" SelectedValue="{Binding NewUserSex}" SelectedIndex="0" Height="25">
+                            <ComboBox x:Name="comboBoxSex" HorizontalAlignment="Stretch" Width="150" SelectedIndex="0" SelectedValue="{Binding NewUserSex, Mode=OneWayToSource}" Height="25">
                                 <ComboBoxItem Content="K"/>
                                 <ComboBoxItem Content="M"/>
                             </ComboBox>

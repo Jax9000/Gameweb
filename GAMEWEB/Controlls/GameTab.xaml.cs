@@ -35,6 +35,7 @@ namespace GAMEWEB.Controlls {
             labelRate2.Content = game.OcenyGier.Average(x => x.Grafika).ToString();
             labelRate3.Content = game.OcenyGier.Average(x => x.Fabula).ToString();
             labelDescription.Content = game.Opis;
+            ratePicker.Game = game;
 
             RefreshComments();
             RefreshReviews();
