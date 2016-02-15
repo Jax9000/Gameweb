@@ -31,8 +31,13 @@ namespace GAMEWEB.Controlls {
                 genres += genre + " ";
             }
             labelGenre.Content = genres;
-            labelRate1.Content = game.OcenyGier.Average(x => x.OcenaOgolna).ToString();
-            labelRankPosition.Content = "Pozycja w rankingu: " + DatabaseManager.Entities.getRankPosition(game.GraID).First().Value;
+            if (game.OcenyGier.Count > 0) {
+                labelRate1.Content = game.OcenyGier.Average(x => x.OcenaOgolna).ToString();
+                labelRankPosition.Content = "Pozycja w rankingu: " + DatabaseManager.Entities.getRankPosition(game.GraID).First().Value;
+            } else {
+                labelRate1.Content = "n";
+                labelRankPosition.Content = "Brak ocen.";
+            }
             labelDescription.Content = game.Opis;
             ratePicker.Game = game;
 
