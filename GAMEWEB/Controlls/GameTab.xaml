@@ -16,28 +16,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="91*"/>
-            <RowDefinition Height="65*"/>
-            <RowDefinition Height="294*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="288*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="labelTitle" Grid.Row="0" Content="Game Title" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="32" Margin="0,0,222,0" Height="50" Width="161"/>
-        <Label x:Name="labelGenre" Grid.Row="1" Content="Genres" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13.333" Height="28" Margin="0,22,0,41" Width="51"/>
+        <Label x:Name="labelTitle" Grid.Row="0" Content="Game Title" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+        <Label x:Name="labelGenre" Grid.Row="1" Content="Genres" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13.333"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
             <StackPanel Background="BlanchedAlmond" Width="auto">
                 <Label Content="Ocena ogólna"/>
                 <presenters:RatePickerPresenter x:Name="ratePicker"/>
                 <Label x:Name="labelRate1" Content="Value"/>
             </StackPanel>
-            <StackPanel Background="BlanchedAlmond">
+            <!--<StackPanel Background="BlanchedAlmond">
                 <Label Content="Grafika"/>
                 <Label x:Name="labelRate2" Content="Value"/>
             </StackPanel>
             <StackPanel Background="BlanchedAlmond">
                 <Label Content="Fabuła"/>
                 <Label x:Name="labelRate3" Content="Value"/>
-            </StackPanel>
+            </StackPanel>-->
         </StackPanel>
-        <Label Margin="30,4,30,289" Background="#FFC6D6DA" x:Name="labelDescription" Content="Opis gry" Grid.Row="3"/>
-        <TabControl x:Name="tabControl" Grid.Row="3" RenderTransformOrigin="0.5,0.5">
+        <Label Background="#FFC6D6DA" x:Name="labelDescription" Content="Opis gry" Grid.Row="2"/>
+        <TabControl x:Name="tabControl" Grid.Row="3">
             <TabControl.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

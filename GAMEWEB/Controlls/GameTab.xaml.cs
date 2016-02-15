@@ -32,8 +32,8 @@ namespace GAMEWEB.Controlls {
             }
             labelGenre.Content = genres;
             labelRate1.Content = game.OcenyGier.Average(x => x.OcenaOgolna).ToString();
-            labelRate2.Content = game.OcenyGier.Average(x => x.Grafika).ToString();
-            labelRate3.Content = game.OcenyGier.Average(x => x.Fabula).ToString();
+            //labelRate2.Content = game.OcenyGier.Average(x => x.Grafika).ToString();
+            //labelRate3.Content = game.OcenyGier.Average(x => x.Fabula).ToString();
             labelDescription.Content = game.Opis;
             ratePicker.Game = game;
 
