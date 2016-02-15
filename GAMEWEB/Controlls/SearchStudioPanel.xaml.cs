@@ -39,6 +39,7 @@ namespace GAMEWEB.Controlls {
             var studies = new List<string>();
             studies.AddRange(DatabaseManager.Entities.Studia.Select(x => x.Nazwa).AsEnumerable());
             comboBox.ItemsSource = studies;
+            comboBox.SelectedIndex = 0;
         }
     }
 }

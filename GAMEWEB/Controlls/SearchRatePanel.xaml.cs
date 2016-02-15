@@ -21,6 +21,7 @@ namespace GAMEWEB.Controlls {
     public partial class SearchRatePanel : UserControl, ISearchDataProvider {
         public SearchRatePanel() {
             InitializeComponent();
+            comboBox.SelectedIndex = 0;
         }
 
         public void Hide() {
