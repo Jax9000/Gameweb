@@ -30,6 +30,7 @@ namespace GAMEWEB.Controlls {
             var genres = new List<string>();
             genres.AddRange(DatabaseManager.Entities.Gatunki.Select(x => x.Nazwa).AsEnumerable());
             comboBox.ItemsSource = genres;
+            comboBox.SelectedIndex = 0;
         }
     }
 }
