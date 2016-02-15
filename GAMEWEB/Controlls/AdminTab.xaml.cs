@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GAMEWEB.Model;
 
 namespace GAMEWEB.Controlls {
     /// <summary>
@@ -23,6 +24,9 @@ namespace GAMEWEB.Controlls {
             viewModel = new AdminViewModel();
             DataContext = viewModel;
 
+            var genres = new List<string>();
+            genres.AddRange(DatabaseManager.Entities.Gatunki.Select(x => x.Nazwa).AsEnumerable());
+            genreComboBox.ItemsSource = genres;
         }
 
         AdminViewModel viewModel;

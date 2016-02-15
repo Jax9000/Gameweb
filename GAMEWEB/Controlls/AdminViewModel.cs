@@ -41,16 +41,24 @@ namespace GAMEWEB.Controlls {
         public DateTime? NewUserBirthdate { get; set; }
         public string NewUserPermission { get; set; }
 
+        public string NewGameName { get; set; }
+        public string NewGameStudioName { get; set; }
+        public DateTime? NewGameRelease { get; set; }
+        public string GenreSelected { get; set; }
+        public string NewGameDescription { get; set; }
+
 
 
         public ICommand DeleteUserCommand { get; private set; }
         public ICommand AddUserCommand { get; private set; }
+        public ICommand AddGameCommand { get; private set; }
 
         public AdminViewModel() {
             UpdateUsers();
             OnPropertyChanged(() => PermissionsTypes);
             DeleteUserCommand = new DelegateCommand(DeleteUser);
             AddUserCommand = new DelegateCommand(AddUser);
+            AddGameCommand = new DelegateCommand(AddGame);
         }
 
         private void UpdateUsers() {
@@ -118,6 +126,62 @@ namespace GAMEWEB.Controlls {
             }
             
         }
+
+        private void AddGame(object obj)
+        {
+            try
+            {
+
+                Action<string, string> okString =
+                    (str, msg) => {
+                        if (str == null || str == "")
+                            throw new EValidData(msg);
+                    };
+
+                Console.WriteLine(NewGameName);
+                okString(NewGameName, "Niepoprawna nazwa gry.");
+                okString(NewGameStudioName, "Niepoprawna nazwa studio.");
+
+                if (DatabaseManager.Entities.Gry.Any(x=> x.Tytul == NewGameName))
+                    throw new EValidData("Gra podanej nazwie już istnieje.");
+
+                if (!(DatabaseManager.Entities.Studia.Any(x => x.Nazwa == NewGameStudioName)))
+                {
+                    var newStudio  = new Studia();
+                    newStudio.Nazwa = NewGameStudioName;
+                    DatabaseManager.Entities.Studia.Add(newStudio);
+                    DatabaseManager.Save();
+                }
+
+                var studio = DatabaseManager.Entities.Studia.First(x => x.Nazwa == NewGameStudioName);
+
+                var game = new Gry()
+                {
+                    Tytul = NewGameName,
+                    StudioID = studio.StudioID,
+                    DataWydania = (DateTime)NewGameRelease,
+                    Opis = NewGameDescription,
+                };
+
+                var gatunek = DatabaseManager.Entities.Gatunki.First(x => x.Nazwa == GenreSelected);
+                gatunek.Gry.Add(game);
+
+                DatabaseManager.Entities.Gry.Add(game);
+                DatabaseManager.Save();
+
+                DialogManager.ShowInfoDialog("Dodawanie gry", "Gra została dodana pomyślnie!");
+            }
+            catch (EValidData e)
+            {
+                DialogManager.ShowErrorDialog("Błędne dane", e.Message);
+            }
+            catch (Exception)
+            {
+                DialogManager.ShowErrorDialog("Błędne dane", "Sprawdź wpisane dane");
+            }
+
+        }
+
 
         private string userToDelete;
         private Uzytkownicy selectedUser;

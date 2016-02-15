@@ -89,7 +89,42 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Gry">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="173*"/>
+                        <ColumnDefinition Width="174*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Background="#FFA5FF97" Grid.Row="0" Grid.Column="0" Margin="10">
+                        <Label Margin="10" Content="Dodaj grę" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="* Nazwa:" Width="100" Height="23"/>
+                            <TextBox x:Name="textGameName" HorizontalAlignment="Stretch" Width="150" Text="{Binding NewGameName}" Height="23"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="* Studio:" Width="100" Height="23"/>
+                            <TextBox x:Name="textStudioName" HorizontalAlignment="Stretch" Width="150" Text="{Binding NewGameStudioName}" Height="23"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="Data wydania:" Width="100" Height="25"/>
+                            <DatePicker x:Name="dateRelease" HorizontalAlignment="Stretch" Width="150" SelectedDate="{Binding NewGameRelease}" Height="25"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="* Gatunek:" Width="100" Height="23"/>
+                            <ComboBox x:Name="genreComboBox" HorizontalAlignment="Stretch" Width="150" Height="23" Text="{Binding GenreSelected}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="* Opis:" Width="100" Height="23"/>
+                            <TextBox x:Name="newGameDescription" HorizontalAlignment="Stretch" Width="150" Text="{Binding NewGameDescription}" Height="23" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <Button Margin="10" Content="Dodaj grę" Width="250" Command="{Binding AddGameCommand}"/>
+                    </StackPanel>
+
+                </Grid>
             </TabItem>
             <TabItem Header="Gry">
                 <Grid Background="#FFE5E5E5"/>
