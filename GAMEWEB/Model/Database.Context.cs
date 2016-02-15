@@ -157,5 +157,14 @@ namespace GAMEWEB.Model
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<Nullable<int>> getRankPosition(Nullable<int> gameID)
+        {
+            var gameIDParameter = gameID.HasValue ?
+                new ObjectParameter("GameID", gameID) :
+                new ObjectParameter("GameID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getRankPosition", gameIDParameter);
+        }
     }
 }
